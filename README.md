@@ -27,7 +27,7 @@ Este projeto simula o movimento de **quatro** peças de xadrez utilizando difere
 ### Nível Aventureiro 🆕
 | Peça | Movimento Simulado | Estrutura | Detalhes |
 |------|-------------------|-----------|----------|
-| **Cavalo** | Movimento em **"L"** | `for` + `while` (aninhados) | 2 casas Baixo + 1 casa Esquerda |
+| **Cavalo** | Movimento em **"L"** | `for` + `while` (alinhados) | 2 casas Baixo + 1 casa Esquerda |
 
 ---
 
