@@ -1,9 +1,10 @@
 /*
- * Desafio: Nível Novato - Movimentando as Peças do Xadrez
- * Este programa simula o movimento de três peças de xadrez:
+ * Desafio: Nível Novato + Aventureiro - Movimentando as Peças do Xadrez
+ * Este programa simula o movimento de quatro peças de xadrez:
  * - Torre: 5 casas para a direita (usando for)
  * - Bispo: 5 casas na diagonal para cima/direita (usando while)
  * - Rainha: 8 casas para a esquerda (usando do-while)
+ * - Cavalo: 2 casas para baixo + 1 casa para esquerda (usando for + while alinhados)
  */
 
 #include <stdio.h>
@@ -87,6 +88,49 @@ int main() {
         contador_rainha++;
         
     } while (contador_rainha <= casas_rainha);
+    
+    printf("\n"); // Linha em branco para separar dos movimentos anteriores
+    
+    /*
+     * ============================================
+     * MOVIMENTO DO CAVALO - Movimento em "L"
+     * Estrutura utilizada: LOOPS ANINHADOS (for + while)
+     * ============================================
+     * O Cavalo move-se em "L": duas casas em uma direção e uma casa 
+     * perpendicularmente. Neste caso: 2 casas BAIXO + 1 casa ESQUERDA.
+     * Usamos loops aninhados: for (externo) + while (interno)
+     */
+    
+    // Definição das constantes do movimento do Cavalo
+    int casas_baixo = 2;       // Primeira parte do "L": 2 casas para baixo
+    int casas_esquerda = 1;    // Segunda parte do "L": 1 casa para esquerda
+    int movimentos_cavalo = 1; // Quantidade de movimentos em "L" a simular
+    
+    printf("=== MOVIMENTO DO CAVALO ===\n");
+    
+    // LOOP EXTERNO (for): Controla quantos movimentos completos em "L" serão feitos
+    for (int movimento = 1; movimento <= movimentos_cavalo; movimento++) {
+        
+        // Variável de controle para o loop interno (while)
+        int etapa = 1;
+        
+        // LOOP INTERNO (while): Controla cada etapa do movimento em "L"
+        // Total de etapas = casas_baixo + casas_esquerda = 2 + 1 = 3
+        while (etapa <= (casas_baixo + casas_esquerda)) {
+            
+            // Verifica qual etapa do movimento estamos executando
+            if (etapa <= casas_baixo) {
+                // Etapas 1 e 2: Movimento para BAIXO
+                printf("Baixo\n");
+            } else {
+                // Etapa 3: Movimento para ESQUERDA
+                printf("Esquerda\n");
+            }
+            
+            // Incrementa a etapa para avançar no loop interno
+            etapa++;
+        }
+    }
     
     return 0; // Indica que o programa terminou com sucesso
 }
