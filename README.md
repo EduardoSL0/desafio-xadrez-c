@@ -1,59 +1,46 @@
 # ♟️ Desafio: Movimentando as Peças do Xadrez
 
-&gt; **Níveis:** Novato + Aventureiro  
+&gt; **Nível:** Mestre  
 &gt; **Linguagem:** C  
-&gt; **Tema:** Estruturas de Repetição (for, while, do-while) + Loops Aninhados
+&gt; **Tema:** Recursividade + Loops Complexos
 
 ---
 
 ## 📋 Descrição do Projeto
 
-Este projeto simula o movimento de **quatro** peças de xadrez utilizando diferentes estruturas de repetição em linguagem C:
+Este projeto simula o movimento de **quatro** peças de xadrez utilizando técnicas avançadas de programação em C:
 
-- **Nível Novato:** Torre, Bispo e Rainha com loops simples
-- **Nível Aventureiro:** Cavalo com **loops aninhados** (for + while) para movimento em "L"
+- **Recursividade** para Torre, Bispo e Rainha
+- **Loops aninhados** para o Bispo (vertical + horizontal)
+- **Loops complexos** com `continue`/`break` para o Cavalo
 
 ---
 
 ## 🎯 Funcionalidades
 
-### Nível Novato
-| Peça | Movimento Simulado | Estrutura | Casas |
-|------|-------------------|-----------|-------|
-| **Torre** | 5 casas para a **Direita** | `for` | 5 |
-| **Bispo** | 5 casas na **Diagonal** (Cima + Direita) | `while` | 5 |
-| **Rainha** | 8 casas para a **Esquerda** | `do-while` | 8 |
+### Nível Mestre
 
-### Nível Aventureiro 🆕
-| Peça | Movimento Simulado | Estrutura | Detalhes |
-|------|-------------------|-----------|----------|
-| **Cavalo** | Movimento em **"L"** | `for` + `while` (alinhados) | 2 casas Baixo + 1 casa Esquerda |
+| Peça | Movimento Simulado | Técnica | Implementação |
+|------|-------------------|---------|---------------|
+| **Torre** | 5 casas para a **Direita** | Recursividade | Função `moverTorre()` |
+| **Bispo** | 5 casas na **Diagonal** (Cima + Direita) | Loops Aninhados | `for` externo (vertical) + `for` interno (horizontal) |
+| **Bispo** | 5 casas na **Diagonal** (alternativa) | Recursividade | Função `moverBispoRecursivo()` |
+| **Rainha** | 8 casas para a **Esquerda** | Recursividade | Função `moverRainha()` |
+| **Cavalo** | Movimento em **"L"** | Loops Complexos | `for` com `continue` (2 cima + 1 direita) |
 
 ---
 
-## 🐎 Sobre o Movimento do Cavalo
+## 🔄 Recursividade
 
-O Cavalo é a única peça do xadrez que se move em **"L"**:
-- **Duas casas** em uma direção (horizontal ou vertical)
-- **Uma casa** perpendicularmente
-
-### Implementação com Loops Aninhados
+As peças Torre, Bispo e Rainha agora utilizam **funções recursivas** em vez de loops simples:
 
 ```c
-// LOOP EXTERNO (for): Controla os movimentos completos
-for (int movimento = 1; movimento &lt;= movimentos_cavalo; movimento++) {
+void moverTorre(int casas) {
+    // Caso base: interrompe a recursão
+    if (casas &lt;= 0) return;
     
-    int etapa = 1;
+    printf("Direita\n");
     
-    // LOOP INTERNO (while): Controla cada etapa do "L"
-    while (etapa &lt;= (casas_baixo + casas_esquerda)) {
-        
-        if (etapa &lt;= casas_baixo) {
-            printf("Baixo\n");      // Etapas 1 e 2
-        } else {
-            printf("Esquerda\n");   // Etapa 3
-        }
-        
-        etapa++;
-    }
+    // Chamada recursiva com valor decrementado
+    moverTorre(casas - 1);
 }
