@@ -3,7 +3,7 @@
  * 
  * Evolução do código anterior (Novato + Aventureiro):
  * - Torre: for → recursividade
- * - Bispo: while → recursividade + loops aninhados
+ * - Bispo: while → recursividade + loops aninhados (Cima e Direita separados)
  * - Rainha: do-while → recursividade  
  * - Cavalo: for+while aninhados → loops complexos com continue/break
  */
@@ -28,7 +28,9 @@ void moverBispoRecursivo(int casas) {
     // Caso base
     if (casas <= 0) return;
     
-    printf("Cima Direita\n");
+    // Saída separada conforme padrão exigido
+    printf("Cima\n");
+    printf("Direita\n");
     
     // Chamada recursiva
     moverBispoRecursivo(casas - 1);
@@ -68,11 +70,14 @@ int main() {
      * =====================================
      * Loop externo (vertical): controla movimento para Cima
      * Loop interno (horizontal): controla movimento para Direita
+     * Saída separada: Cima em uma linha, Direita em outra
      */
     printf("=== BISPO (Loops Aninhados) ===\n");
     for (int vertical = 0; vertical < casas_bispo; vertical++) {
+        printf("Cima\n");
+        
         for (int horizontal = 0; horizontal < 1; horizontal++) {
-            printf("Cima Direita\n");
+            printf("Direita\n");
         }
     }
     printf("\n");
@@ -81,6 +86,7 @@ int main() {
      * MOVIMENTO DO BISPO - Recursividade
      * ===================================
      * Mesmo movimento, implementado com recursão
+     * Saída separada: Cima em uma linha, Direita em outra
      */
     printf("=== BISPO (Recursivo) ===\n");
     moverBispoRecursivo(casas_bispo);
